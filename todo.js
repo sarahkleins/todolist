@@ -1,14 +1,25 @@
-// Each item should look like this:
-// <li><span>Add grid to this app</span> <input type="checkbox" /></li>
-
 //lessons learned
 // - Avoid global variables
 // - Strive to make functions reusable
 // - Don't use getElementbyId in a function, instead
 
 function addNewItem(list, itemText){
+// Each item should look like this:
+// <li>
+	//<input type=checkbox />
+	// <span>Add grid to this app</span> 
+//</li>
+
 	var listItem = document.createElement("li")
-	listItem.innerText = itemText;
+	var checkBox = document.createElement("input");
+	checkBox.type = "checkbox";
+
+	var span = document.createElement("span");
+	span.textContent = itemText;
+
+	listItem.appendChild(span);
+	listItem.appendChild(checkBox);
+	// listItem.textContent = itemText;
 
 	list.appendChild(listItem);
 }
@@ -23,10 +34,6 @@ function moveNewItem(){
 	//function that moves item from column to column 
 	//Append to inProgress column
 	//or Append to Delete column
-}
-
-function clearText(){
-	document.getElementById("inItemText").defaultValue = " ";
 }
 
 var newItem = document.getElementById("todoList");
@@ -46,7 +53,7 @@ inItemText.onkeyup = function(event) {
 
 	addNewItem(document.getElementById("todoList"), itemText);
 	// addNewItem(document.getElementById("inProgress"));
-	
+
 	inItemText.value = " ";
 	}
 };
