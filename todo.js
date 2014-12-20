@@ -28,6 +28,7 @@ var newItem = document.getElementById("todoList");
 
 btnAdd.onclick = function() {
 	addNewItem(document.getElementById("todoList"));
+	addNewItem(document.getElementById("inProgress"));
 };
 //Create a function directly here
 //Function with () calls the function immediately. Handler goes to addNewItem function. 

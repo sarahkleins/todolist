@@ -1,3 +1,3 @@
 # To do list
 
-Simple to do list, using Javascript. 
+Simple to do list using Javascript. 
