@@ -6,9 +6,9 @@
 // - Strive to make functions reusable
 // - Don't use getElementbyId in a function, instead
 
-function addNewItem(list){
+function addNewItem(list, itemText){
 	var listItem = document.createElement("li")
-	listItem.innerText = "Hello";
+	listItem.innerText = itemText;
 
 	list.appendChild(listItem);
 }
@@ -21,14 +21,17 @@ function deleteNewItem(){
 
 function moveNewItem(){
 	//function that moves item from column to column 
+	//Append to inProgress column
+	//or Append to Delete column
 }
 
 var newItem = document.getElementById("todoList");
 //Reference to the new item
 
 btnAdd.onclick = function() {
-	addNewItem(document.getElementById("todoList"));
-	addNewItem(document.getElementById("inProgress"));
+	var itemText = prompt("What would you like");
+	addNewItem(document.getElementById("todoList"), itemText);
+	// addNewItem(document.getElementById("inProgress"));
 };
 //Create a function directly here
 //Function with () calls the function immediately. Handler goes to addNewItem function. 
