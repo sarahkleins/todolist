@@ -31,7 +31,7 @@ var newItem = document.getElementById("todoList");
 btnAdd.onclick = function() {
 	var itemText = prompt("What would you like");
 
-	if (itemText === false || " ") {
+	if (!itemText || itemText == "") {
 		return false;
 	}
 
