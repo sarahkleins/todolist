@@ -28,10 +28,14 @@ function moveNewItem(){
 var newItem = document.getElementById("todoList");
 //Reference to the new item
 
-btnAdd.onclick = function() {
-	var itemText = prompt("What would you like");
+var inItemText = document.getElementById("inItemText");
+inItemText.focus();
 
-	if (!itemText || itemText == "") {
+btnAdd.onclick = function() {
+
+	var itemText = inItemText.value;
+
+	if (!itemText || itemText == "" || itemText == " ") {
 		return false;
 	}
 
