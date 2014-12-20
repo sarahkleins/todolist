@@ -30,17 +30,19 @@ var newItem = document.getElementById("todoList");
 
 var inItemText = document.getElementById("inItemText");
 inItemText.focus();
+inItemText.onkeyup = function(event) {
 
-btnAdd.onclick = function() {
+	// Event.which (13) -> ENTER
+	if (event.which == 13){
+		var itemText = inItemText.value;
 
-	var itemText = inItemText.value;
-
-	if (!itemText || itemText == "" || itemText == " ") {
-		return false;
-	}
+		if (!itemText || itemText == "" || itemText == " ") {
+			return false;
+		}
 
 	addNewItem(document.getElementById("todoList"), itemText);
 	// addNewItem(document.getElementById("inProgress"));
+	}
 };
 //Create a function directly here
 //Function with () calls the function immediately. Handler goes to addNewItem function. 
