@@ -25,6 +25,10 @@ function moveNewItem(){
 	//or Append to Delete column
 }
 
+function clearText(){
+	document.getElementById("inItemText").defaultValue = " ";
+}
+
 var newItem = document.getElementById("todoList");
 //Reference to the new item
 
@@ -42,6 +46,8 @@ inItemText.onkeyup = function(event) {
 
 	addNewItem(document.getElementById("todoList"), itemText);
 	// addNewItem(document.getElementById("inProgress"));
+	
+	inItemText.value = " ";
 	}
 };
 //Create a function directly here
