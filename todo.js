@@ -30,6 +30,11 @@ var newItem = document.getElementById("todoList");
 
 btnAdd.onclick = function() {
 	var itemText = prompt("What would you like");
+
+	if (itemText === false || " ") {
+		return false;
+	}
+
 	addNewItem(document.getElementById("todoList"), itemText);
 	// addNewItem(document.getElementById("inProgress"));
 };
