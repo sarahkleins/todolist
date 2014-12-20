@@ -4,12 +4,12 @@
 //lessons learned
 // - Avoid global variables
 // - Strive to make functions reusable
+// - Don't use getElementbyId in a function, instead
 
 function addNewItem(list){
 	var listItem = document.createElement("li")
 	listItem.innerText = "Hello";
 
-	var list = document.getElementById("todoList");
 	list.appendChild(listItem);
 }
 //creates an element to add to this list
@@ -26,7 +26,9 @@ function moveNewItem(){
 var newItem = document.getElementById("todoList");
 //Reference to the new item
 
-btnAdd.onclick = addNewItem;
+btnAdd.onclick = function() {
+	addNewItem(document.getElementById("todoList"));
+};
 //Create a function directly here
 //Function with () calls the function immediately. Handler goes to addNewItem function. 
 //to make sure this doesn't fire immediately, wrap it in an anonymouse function. 
