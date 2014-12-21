@@ -1,0 +1,100 @@
+<!doctype html>
+<head>
+	<title>To do list - Javascript</title>
+
+	<style>
+	ul {
+		list-style: none;
+		padding:10px;
+		margin: 10px;
+		width: 40%;
+		float: left;
+		border: 1px solid #333;
+		background: snow;
+	}
+	</style>
+</head>
+
+<body>
+<h1>To-do list</h1>
+
+<input type="text" id="input"/>
+<button id="btn">ADD</button>
+
+<hr/>
+
+<ul id="todo">
+</ul>
+
+<ul id="done">
+</ul>
+
+<script>
+//Anonymous self-invoking function 4:58
+	(function(){
+		var input = document.getElementById('input');
+		var btn = document.getElementById('btn');
+		var lists = {
+			todo: document.getElementById('todo'),
+			done: document.getElementById('done')
+		};
+		//alternate here at 7:50
+		var makeTaskHTML = function(str, onCheck){
+			var el = document.createElement('li');
+			var checkbox = document.createElement('input');
+//For explanation see 10:48
+			var label = document.createElement('span');
+
+			label.textContent=str;
+			checkbox.type = 'checkbox';
+			checkbox.addEventListener('click', onCheck);
+
+			el.appendChild(checkbox);
+			el.appendChild(label);
+
+			return el;
+		};
+		//add Element to DOM tree to parent
+		var addTask = function (task){
+			lists.todo.appendChild(task);
+		};
+
+//Call back function
+		var onCheck = function(event){
+			var task = event.target.parentElement;
+			var list = task.parentElement.id;
+//Don't understand this 16:55
+			lists[list === 'done' ? 'todo' : 'done'].appendChild(task);
+			this.checked = false;
+			input.focus();
+
+		};
+
+			var onInput = function(){
+				var str = input.value.trim();
+
+				if (str.length > 0){
+					addTask(makeTaskHTML(str, onCheck));
+					input.value = '';
+					input.focus();
+				}
+
+			};
+			btn.addEventListener('click', onInput);
+			input.addEventListener('keyup', function(event){
+				var code = event.keyCode;
+
+				if (code === 13){
+					onInput();
+				}
+			})
+			input.focus();
+
+	}());
+
+</script>
+
+
+
+
+</body>
