@@ -1,33 +1,25 @@
 <!doctype html>
-<html lang="en" class="no-js">
-	<head>
+
+<head>
 		<meta charset="UTF-8">
-		<!-- css -->
-		<!-- <link rel="stylesheet" href="reset.css">  --><!-- css reset -->
-		<link rel="stylesheet" href="#"> <!-- main styles -->
-		<!-- javascript -->
-		<title>To do</title>
-	</head>
-
-	<body>
-		<h1>To do list</h1>
-		<p><input type="text" id="inItemText" /> 	<!-- <button id="btnAdd">+</button> 	<input type="checkbox" /> -->
-			<!-- add the checkbox next to generated list items -->
-
-		<ul id="todoList">
-		</ul>
+		<link rel="stylesheet" href="reset.css">
+		<link rel="stylesheet" href="main.css">
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
+    <title>To do list</title>
+</head>
 
 
+<body>
+
+	<div id="container">
+		<h1>To-do list</h1>
+		<div id="container-2">
+			<input type="text" id="input"> </input><button type="button" id="submit">Add</button>
+
+			<ul id="list"></ul>
 
 
-	<h1>In Progress</h1>
-	<ul id="inProgress"></ul>
-
-	<h1>Done</h1>
-
-
-
-		<script type="text/javascript" src="todo.js"></script>
-	</body>
-
-</html>
+		<script src="todo.js" type="text/javascript" charset="utf-8"></script>
+		</div><!-- container 2 -->
+	</div><!-- container -->
+</body>
