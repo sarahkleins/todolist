@@ -22,7 +22,9 @@ var createButton = function() {
 */
 
 //Add new item
-var createNewItem = function (){   
+var createNewItem = function (){
+    if (input.value !== ''){
+       
     var newTask = document.createElement('li');
     var button = document.createElement('button');
     
@@ -43,7 +45,7 @@ var createNewItem = function (){
     input.value = ''
     input.focus();
     
-    
+    }
     //return newTask;
     //return button;
     
