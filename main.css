@@ -64,6 +64,7 @@ h1 {
 }
 
 
+
 li {
 	font-family: Lato;
 	font-size: 20px;
@@ -105,4 +106,37 @@ li {
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+@media only screen and (max-width: 800px){
+	#container {
+		margin: 0 auto;  
+		padding: 0.5em;
+		position: relative; 
+		text-align: center;
+		width: 500px;
+	}
+}
+
+@media only screen and (max-width: 440px){
+	#container {
+		margin: 0 auto;  
+		padding: 0.5em;
+		position: relative; 
+		text-align: center;
+		width: 300px;
+	}
+	h1 {
+		font-size: 4em;
+	}
+
+	#container2{
+		display: inline-block;
+		margin-top: 0em;
+		width: 0.3em;
+	}
+
+	#submit{
+		margin-top: 5px;
+	}
 }
