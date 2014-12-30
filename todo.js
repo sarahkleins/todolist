@@ -3,6 +3,7 @@
     var input = document.getElementById("input");
     var submit = document.getElementById("submit");
     var list = document.getElementById("list");
+
     //create variables here for localStorage to access?
     //var x = document.getElementById("delete")
     //var newItem = document.getElementById("...? [array];
@@ -41,6 +42,7 @@ var createNewItem = function (){
     //Call localStorage here? Send in what we've just created newTask, button. It will use these values inside the localStorage function. How do I access a function within a function. Put it in global scope - how?
     
     //localStorage(newTask);
+
     
     input.value = ''
     input.focus();
