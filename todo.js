@@ -3,24 +3,10 @@
     var input = document.getElementById("input");
     var submit = document.getElementById("submit");
     var list = document.getElementById("list");
+    var remove = document.getElementById("delete");
 
-    //create variables here for localStorage to access?
-    //var x = document.getElementById("delete")
-    //var newItem = document.getElementById("...? [array];
+        input.focus();
 
-
-    input.focus();
-
-/*
-var createButton = function() {
-    var button = 
-    document.createElement('button');
-    button.innerHTML = "X";
-    button.setAttribute("type", "button") 
-    button.setAttribute("id", "delete");
-    console.log(button);
-};
-*/
 
 //Add new item
 var createNewItem = function (){
@@ -31,26 +17,22 @@ var createNewItem = function (){
     
     newTask.innerHTML = input.value;
     newTask.setAttribute("id", list.childNodes.length);
+    //newTask.setAttribute("id", "listItem");
     newTask.addEventListener("click", deleteItem, false);
+    //When using below, deleteItem, createNewItem, keyPress all come up with Cannot read property 'parentNode' of undefined
+    //newTask.addEventListener("click", deleteItem());
     list.appendChild(newTask);
    
     button.innerHTML = 'X';
     button.setAttribute("id", "delete");
     button.addEventListener("click", deleteItem, false);
-    newTask.appendChild(button); 
-     
-    //Call localStorage here? Send in what we've just created newTask, button. It will use these values inside the localStorage function. How do I access a function within a function. Put it in global scope - how?
-    
-    //localStorage(newTask);
+    newTask.appendChild(button);
 
-    
     input.value = ''
     input.focus();
-    
+
     }
-    //return newTask;
-    //return button;
-    
+
 };
 
 //localStorage.setItem
@@ -76,16 +58,7 @@ var keyPress = function(event){
     }
 };
 
-//localStorage - a reference to this function(event) goes inside createItem, with all the instructions outside?
-//Example that helped me think about this
 
-    /*function sayHello(who){
-        documenwrite("Hello," + who);
-    }  
-    
-    sayHello("Bob");
-    */
-    
 function saveTodoItem(createNewItem) {
     if (localStorage) {
         var key = "todo" + todoItem.id;
