@@ -64,7 +64,7 @@ h1 {
 }
 
 
-
+/*animation*/
 li {
 	font-family: Lato;
 	font-size: 20px;
@@ -108,6 +108,7 @@ li {
     to   { opacity: 1; }
 }
 
+/*media queries*/
 @media only screen and (max-width: 800px){
 	#container {
 		margin: 0 auto;  

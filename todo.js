@@ -64,6 +64,7 @@ var deleteItem = function(){
     var ul = listItem.parentNode;
     
     ul.removeChild(listItem);
+    input.focus();
 };
 
 //Create New Item on keypress (Enter) as well as on click
