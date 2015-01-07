@@ -14,15 +14,13 @@ var createNewItem = function (){
        
     var newTask = document.createElement('li');
     var button = document.createElement('button');
-    
+
+
     newTask.innerHTML = input.value;
-    newTask.setAttribute("id", list.childNodes.length);
-    //newTask.setAttribute("id", "listItem");
-    newTask.addEventListener("click", deleteItem, false);
-    //When using below, deleteItem, createNewItem, keyPress all come up with Cannot read property 'parentNode' of undefined
-    //newTask.addEventListener("click", deleteItem());
+    newTask.setAttribute("id", "listItem" + (list.childNodes.length +1));
     list.appendChild(newTask);
-   
+
+
     button.innerHTML = 'X';
     button.setAttribute("id", "delete");
     button.addEventListener("click", deleteItem, false);
@@ -38,9 +36,8 @@ var createNewItem = function (){
 //localStorage.setItem
 //localStorage.getItem
 
-//delete this node that's inside, find the node in the list with the ID that I know I have. Find out what the ID is, and then delete that from the list. Delete my parent element. 
 
-//Delete item from list //Want to delete button element that's clicked and parent element <li>
+//Deletes item from list
 var deleteItem = function(){
     var listItem = this.parentNode;
     var ul = listItem.parentNode;
@@ -49,7 +46,7 @@ var deleteItem = function(){
     input.focus();
 };
 
-//Create New Item on keypress (Enter) as well as on click
+//Creates newTask on keypress (Enter) as well as on click
 var keyPress = function(event){
     var code = event.keyCode;
     
@@ -77,6 +74,6 @@ document.getElementById("input").addEventListener('keypress', keyPress);
 }());
                        
                        
-//Is the below needed? How does it work without it?
+//Is the below needed? How does it work without it? Questions that need answering - Gandalf the Grey. 
 //document.getElementById("delete").addEventListener('click', deleteItem);
 
