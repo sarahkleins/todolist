@@ -11,20 +11,25 @@
 //Add new item
 var createNewItem = function (){
     if (input.value !== ''){
-       
     var newTask = document.createElement('li');
-    var button = document.createElement('button');
+    var deleteButton = document.createElement('button'); 
+    var editButton = document.createElement('button');
 
 
     newTask.innerHTML = input.value;
     newTask.setAttribute("id", "listItem" + (list.childNodes.length +1));
     list.appendChild(newTask);
 
+    editButton.innerHTML = '-';
+    editButton.setAttribute("id", "edit");
+    editButton.addEventListener("click", editItem, false);    
+    newTask.appendChild(editButton);
 
-    button.innerHTML = 'X';
-    button.setAttribute("id", "delete");
-    button.addEventListener("click", deleteItem, false);
-    newTask.appendChild(button);
+
+    deleteButton.innerHTML = 'X';
+    deleteButton.setAttribute("id", "delete");
+    deleteButton.addEventListener("click", deleteItem, false);
+    newTask.appendChild(deleteButton);
 
     input.value = ''
     input.focus();
@@ -32,9 +37,6 @@ var createNewItem = function (){
     }
 
 };
-
-//localStorage.setItem
-//localStorage.getItem
 
 
 //Deletes item from list
@@ -46,6 +48,17 @@ var deleteItem = function(){
     input.focus();
 };
 
+var editItem = function(){
+    var editItem = this.parentNode;
+    //var ul = editItem.parentNode;
+
+    editItem.contentEditable = true;
+    //ul.contentEditable = true;
+    editItem.focus();
+    
+    };
+
+
 //Creates newTask on keypress (Enter) as well as on click
 var keyPress = function(event){
     var code = event.keyCode;
@@ -56,16 +69,16 @@ var keyPress = function(event){
 };
 
 
-function saveTodoItem(createNewItem) {
-    if (localStorage) {
-        var key = "todo" + todoItem.id;
-        var item = JSON.stringify(todoItem);
-        localStorage.setItem(key, item);
-    }
-    else {
-        console.log("Error: you don't have localStorage!");
-    }
-}     
+// function saveTodoItem(createNewItem) {
+//     if (localStorage) {
+//         var key = "todo" + todoItem.id;
+//         var item = JSON.stringify(todoItem);
+//         localStorage.setItem(key, item);
+//     }
+//     else {
+//         console.log("Error: you don't have localStorage!");
+//     }
+// }     
 
 
 document.getElementById("submit").addEventListener('click', createNewItem);

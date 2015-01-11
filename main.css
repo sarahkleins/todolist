@@ -15,6 +15,10 @@
 	margin-top: 0em;
 }
 
+li {
+	margin-top: 5px;
+}
+
 h1 {
 	font-family: Lato;
 	font-size: 5em;
@@ -33,6 +37,19 @@ h1 {
 
 
 #delete:hover{
+	background-color: crimson;
+	color: white;
+}
+
+
+#edit {
+    background: #E6E6E6;
+    border: 0 rgba(0,0,0,0);
+    border-radius: 2px;
+    margin-left: 5px;
+}
+
+#edit:hover{
 	background-color: crimson;
 	color: white;
 }
@@ -59,7 +76,8 @@ h1 {
 	font-size: 16px;
 	font-weight: 300;
 	height: 30px;
-	margin: 10px 10px auto;
+	margin: 0px 10px auto;
+	margin-left: 0px;
 	width: 300px;
 }
 
