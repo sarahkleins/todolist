@@ -16,19 +16,21 @@ var createNewItem = function (){
 
 
     newTask.innerHTML = input.value;
+    //newTask.addEventListener("submit", saveToDoItem, false);
     newTask.setAttribute("id", "listItem" + (list.childNodes.length +1));
     list.appendChild(newTask);
 
     editButton.innerHTML = '-';
     editButton.setAttribute("id", "edit");
-    editButton.addEventListener("click", editItem, false);    
+    editButton.addEventListener("click", editItem, false);
+    editButton.contentEditable = false;    
     newTask.appendChild(editButton);
 
     deleteButton.innerHTML = 'X';
     deleteButton.setAttribute("id", "delete");
     deleteButton.addEventListener("click", deleteItem, false);
+    deleteButton.contentEditable = false;
     newTask.appendChild(deleteButton);
-
 
     input.value = ''
     input.focus();
@@ -36,7 +38,6 @@ var createNewItem = function (){
     }
 
 };
-
 
 //Deletes item from list when clicked
 var deleteItem = function(){
@@ -50,12 +51,11 @@ var deleteItem = function(){
 //Edits item when clicked
 var editItem = function(){
     var editItem = this.parentNode;
-
     editItem.contentEditable = true;
-    editItem.focus();
-    
-    };
 
+    editItem.focus();
+
+    };
 
 //Creates newTask on keypress (Enter) as well as on click
 var keyPress = function(event){
@@ -65,6 +65,10 @@ var keyPress = function(event){
         createNewItem();
     }
 };
+
+//var saveToDoItem = function(event){
+//    alert(this);
+//}
 
 
 // function saveTodoItem(createNewItem) {
@@ -81,6 +85,7 @@ var keyPress = function(event){
 
 document.getElementById("submit").addEventListener('click', createNewItem);
 document.getElementById("input").addEventListener('keypress', keyPress);
+//document.getElementById("list").addEventListener('load', saveToDoItem);
 
 }());
 
