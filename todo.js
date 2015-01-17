@@ -21,7 +21,7 @@ var createNewItem = function (){
     newTask.setAttribute("id", "listItem" + (list.childNodes.length +1));
     list.appendChild(newTask);
 
-    saveToDoItem();
+    //saveToDoItem();
 
     editButton.innerHTML = '-';
     editButton.setAttribute("id", "edit");
@@ -70,12 +70,12 @@ var keyPress = function(event){
 };
 
 //Saves items to localStorage
-var saveToDoItem = function(event){
+/*var saveToDoItem = function(event){
    var todolist = list.querySelector('li');
    console.log(todolist);
    JSON.stringify(todolist);
    console.log(todolist);
-};
+};*/
 
 
 // function saveTodoItem(createNewItem) {
