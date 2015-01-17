@@ -3,6 +3,7 @@
     var submit = document.getElementById("submit");
     var list = document.getElementById("list");
     var remove = document.getElementById("delete");
+    var todos = [];
 
     input.focus();
 
@@ -16,9 +17,11 @@ var createNewItem = function (){
 
 
     newTask.innerHTML = input.value;
-    //newTask.addEventListener("submit", saveToDoItem, false);
+    //newTask.addEventListener("input", saveToDoItem, false);
     newTask.setAttribute("id", "listItem" + (list.childNodes.length +1));
     list.appendChild(newTask);
+
+    saveToDoItem();
 
     editButton.innerHTML = '-';
     editButton.setAttribute("id", "edit");
@@ -32,7 +35,7 @@ var createNewItem = function (){
     deleteButton.contentEditable = false;
     newTask.appendChild(deleteButton);
 
-    input.value = ''
+    input.value = '';
     input.focus();
 
     }
@@ -66,9 +69,13 @@ var keyPress = function(event){
     }
 };
 
-//var saveToDoItem = function(event){
-//    alert(this);
-//}
+//Saves items to localStorage
+var saveToDoItem = function(event){
+   var todolist = list.querySelector('li');
+   console.log(todolist);
+   JSON.stringify(todolist);
+   console.log(todolist);
+};
 
 
 // function saveTodoItem(createNewItem) {
@@ -85,7 +92,7 @@ var keyPress = function(event){
 
 document.getElementById("submit").addEventListener('click', createNewItem);
 document.getElementById("input").addEventListener('keypress', keyPress);
-//document.getElementById("list").addEventListener('load', saveToDoItem);
+//document.getElementById("list").addEventListener('input', saveToDoItem);
 
 }());
 
