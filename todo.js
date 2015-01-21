@@ -4,6 +4,7 @@
     var list = document.getElementById("list");
     var remove = document.getElementById("delete");
     var todos = [];
+    console.log(localStorage.getItem("items"));
 
     input.focus();
 
@@ -17,11 +18,14 @@ var createNewItem = function (){
 
 
     newTask.innerHTML = input.value;
+    todos.push(input.value);
+    console.log(todos);
+
     //newTask.addEventListener("input", saveToDoItem, false);
     newTask.setAttribute("id", "listItem" + (list.childNodes.length +1));
     list.appendChild(newTask);
 
-    //saveToDoItem();
+    //console.log(saveToDoItem(todos));
 
     editButton.innerHTML = '-';
     editButton.setAttribute("id", "edit");
@@ -70,24 +74,33 @@ var keyPress = function(event){
 };
 
 //Saves items to localStorage
-/*var saveToDoItem = function(event){
-   var todolist = list.querySelector('li');
-   console.log(todolist);
-   JSON.stringify(todolist);
-   console.log(todolist);
-};*/
 
+var saveToDoItem = function(todos){
+    //for (var i = 0; i < todos.length; i++){
+        //console.log(todos[i]);
+    //}
+   //var todolist = list.querySelector('li');
+   //console.log(toDoList);
+   localStorage.setItem("items",JSON.stringify(todos));
 
-// function saveTodoItem(createNewItem) {
-//     if (localStorage) {
-//         var key = "todo" + todoItem.id;
-//         var item = JSON.stringify(todoItem);
-//         localStorage.setItem(key, item);
-//     }
-//     else {
-//         console.log("Error: you don't have localStorage!");
-//     }
-// }     
+   //Out of JSON string and into list
+   //Logs to localStorage, but doesn't print to screen
+   //console.log(toDoList);
+};
+
+//Load to do items from localStorage
+var loadToDoItems = function(){
+
+    var notes = JSON.parse(localStorage.getItem("items"));
+    //for(todo in notes) {
+        //createNewItem(todos[i]);
+    //}
+    for (var i = 0; i < notes.length; i++){
+        createNewItem(notes[i]);
+    }
+}
+
+//Edit or Update call Save todoitems
 
 
 document.getElementById("submit").addEventListener('click', createNewItem);
