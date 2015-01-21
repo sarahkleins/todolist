@@ -8,17 +8,29 @@
 
     input.focus();
 
+//if (input.value !== ''){}
+
+var createNewItemFromInput = function(){
+    if (input.value !== ''){
+        createNewItem(input.value);
+        saveToDoItem(todos);
+    }
+}
 
 //Creates new item
-var createNewItem = function (){
-    if (input.value !== ''){
+var createNewItem = function (textContent){
     var newTask = document.createElement('li');
+    var span = document.createElement('span');
     var deleteButton = document.createElement('button'); 
     var editButton = document.createElement('button');
 
 
-    newTask.innerHTML = input.value;
-    todos.push(input.value);
+    //newTask.innerHTML = input.value;
+    //todos.push(input.value);
+    span.innerHTML = textContent;
+    newTask.appendChild(span);
+
+    todos.push(textContent);
     console.log(todos);
 
     //newTask.addEventListener("input", saveToDoItem, false);
@@ -42,15 +54,29 @@ var createNewItem = function (){
     input.value = '';
     input.focus();
 
-    }
-
 };
 
 //Deletes item from list when clicked
 var deleteItem = function(){
     var listItem = this.parentNode;
     var ul = listItem.parentNode;
-    
+
+    var span = listItem.firstChild;
+    var removeItem = span.textContent;
+
+    var index = todos.indexOf(removeItem);
+    todos.splice(index, 1)
+    //if it was 2 it would take both
+
+    //resave to localStorage
+
+    saveToDoItem(todos);
+
+    //todos[removeItem];
+    //get value of parent
+    //pop out of todo list
+    //saveToDoItem
+
     ul.removeChild(listItem);
     input.focus();
 };
@@ -59,6 +85,8 @@ var deleteItem = function(){
 var editItem = function(){
     var editItem = this.parentNode;
     editItem.contentEditable = true;
+
+    //find solution! very similar, index replacing etc
 
     editItem.focus();
 
@@ -69,7 +97,7 @@ var keyPress = function(event){
     var code = event.keyCode;
     
     if (code === 13){
-        createNewItem();
+        createNewItemFromInput();
     }
 };
 
@@ -102,8 +130,10 @@ var loadToDoItems = function(){
 
 //Edit or Update call Save todoitems
 
+loadToDoItems();
 
-document.getElementById("submit").addEventListener('click', createNewItem);
+
+document.getElementById("submit").addEventListener('click', createNewItemFromInput);
 document.getElementById("input").addEventListener('keypress', keyPress);
 //document.getElementById("list").addEventListener('input', saveToDoItem);
 
