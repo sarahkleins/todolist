@@ -4,7 +4,7 @@
     var list = document.getElementById("list");
     var remove = document.getElementById("delete");
     var todos = [];
-    //console.log(localStorage.getItem("items"));
+    console.log(localStorage.getItem("items"));
 
     input.focus();
 
@@ -30,7 +30,7 @@ var createNewItem = function (textContent){
     newTask.appendChild(span);
 
     todos.push(textContent);
-    //console.log(todos);
+    console.log(todos);
 
     //newTask.addEventListener("input", saveToDoItem, false);
     newTask.setAttribute("id", "listItem" + (list.childNodes.length +1));
