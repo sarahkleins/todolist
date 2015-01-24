@@ -4,11 +4,10 @@
     var list = document.getElementById("list");
     var remove = document.getElementById("delete");
     var todos = [];
-    //console.log(localStorage.getItem("items"));
+    console.log(localStorage.getItem("items"));
 
     input.focus();
 
-//if (input.value !== ''){}
 
 var createNewItemFromInput = function(){
     if (input.value !== ''){
@@ -135,6 +134,7 @@ var saveToDoItem = function(todos){
 };
 
 //Load to do items from localStorage
+
 var loadToDoItems = function(){
 
     var notes = JSON.parse(localStorage.getItem("items"));
