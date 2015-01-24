@@ -87,11 +87,33 @@ var editItem = function(){
     var span = editItem.firstChild;
     span.contentEditable = true;
 
-    //find solution! very similar, index replacing etc
-
     span.focus();
 
+    //var textContent = span.innerHTML;
+    //todos.push(textContent);
+
+    span.addEventListener("blur", saveEditedItem, true);
+
+    //var editedItem = span.textContent;
+
+    //var index = todos.indexOf(editedItem);
+    //todos.splice(index, 1)
+
+    //saveToDoItem(todos);
+
+     //find solution! very similar, index replacing etc
+
     };
+
+var saveEditedItem = function(){
+    var editedItem = this.textContent;
+
+    var index = todos.indexOf(editedItem);
+    todos.splice(index, 1)
+    todos.push(editedItem);
+
+    saveToDoItem(todos);
+}
 
 //Creates newTask on keypress (Enter) as well as on click
 var keyPress = function(event){
@@ -105,11 +127,6 @@ var keyPress = function(event){
 //Saves items to localStorage
 
 var saveToDoItem = function(todos){
-    //for (var i = 0; i < todos.length; i++){
-        //console.log(todos[i]);
-    //}
-   //var todolist = list.querySelector('li');
-   //console.log(toDoList);
    localStorage.setItem("items",JSON.stringify(todos));
 
    //Out of JSON string and into list
@@ -121,16 +138,13 @@ var saveToDoItem = function(todos){
 var loadToDoItems = function(){
 
     var notes = JSON.parse(localStorage.getItem("items"));
-    //for(todo in notes) {
-        //createNewItem(todos[i]);
-    //}
+
     for (var i = 0; i < notes.length; i++){
         createNewItem(notes[i]);
     }
 }
 
 //Edit or Update call Save todoitems
-
 loadToDoItems();
 
 
