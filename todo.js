@@ -4,7 +4,7 @@
     var list = document.getElementById("list");
     var remove = document.getElementById("delete");
     var todos = [];
-    console.log(localStorage.getItem("items"));
+    //console.log(localStorage.getItem("items"));
 
     input.focus();
 
