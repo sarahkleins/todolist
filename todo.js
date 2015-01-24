@@ -84,11 +84,12 @@ var deleteItem = function(){
 //Edits item when clicked
 var editItem = function(){
     var editItem = this.parentNode;
-    editItem.contentEditable = true;
+    var span = editItem.firstChild;
+    span.contentEditable = true;
 
     //find solution! very similar, index replacing etc
 
-    editItem.focus();
+    span.focus();
 
     };
 
