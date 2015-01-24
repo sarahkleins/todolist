@@ -135,17 +135,19 @@ var saveToDoItem = function(todos){
 
 //Load to do items from localStorage
 
-var loadToDoItems = function(){
+
+/*var loadToDoItems = function(){
 
     var notes = JSON.parse(localStorage.getItem("items"));
 
+//Uncaught TypeError: Cannot read property 'length' of null. It doesn't like var notes = JSON.parse...?
     for (var i = 0; i < notes.length; i++){
         createNewItem(notes[i]);
     }
-}
+}*/
 
 //Edit or Update call Save todoitems
-loadToDoItems();
+//loadToDoItems();
 
 
 document.getElementById("submit").addEventListener('click', createNewItemFromInput);
