@@ -4,11 +4,10 @@
     var list = document.getElementById("list");
     var remove = document.getElementById("delete");
     var todos = [];
-    //console.log(localStorage.getItem("items"));
+    console.log(localStorage.getItem("items"));
 
     input.focus();
 
-//if (input.value !== ''){}
 
 var createNewItemFromInput = function(){
     if (input.value !== ''){
@@ -25,19 +24,15 @@ var createNewItem = function (textContent){
     var editButton = document.createElement('button');
 
 
-    //newTask.innerHTML = input.value;
-    //todos.push(input.value);
     span.innerHTML = textContent;
     newTask.appendChild(span);
 
     todos.push(textContent);
-    //console.log(todos);
-
-    //newTask.addEventListener("input", saveToDoItem, false);
+    console.log(todos);
+ 
     newTask.setAttribute("id", "listItem" + (list.childNodes.length +1));
     list.appendChild(newTask);
 
-    //console.log(saveToDoItem(todos));
 
     editButton.innerHTML = '-';
     editButton.setAttribute("id", "edit");
@@ -64,19 +59,15 @@ var deleteItem = function(){
     var span = listItem.firstChild;
     var removeItem = span.textContent;
 
+    //indexOf finds the index of removeItem in the todos array. The splice method removes the item. Second parameter is the number of elements that will be removed.
     var index = todos.indexOf(removeItem);
     todos.splice(index, 1)
-    //if it was 2 it would take both
+
 
     //resave to localStorage
-
     saveToDoItem(todos);
 
-    //todos[removeItem];
-    //get value of parent
-    //pop out of todo list
-    //saveToDoItem
-
+    //remove from the DOM
     ul.removeChild(listItem);
     input.focus();
 };
@@ -89,22 +80,11 @@ var editItem = function(){
 
     span.focus();
 
-    //var textContent = span.innerHTML;
-    //todos.push(textContent);
-
     span.addEventListener("blur", saveEditedItem, true);
-
-    //var editedItem = span.textContent;
-
-    //var index = todos.indexOf(editedItem);
-    //todos.splice(index, 1)
-
-    //saveToDoItem(todos);
-
-     //find solution! very similar, index replacing etc
 
     };
 
+//Saves editedItem to the todos array.
 var saveEditedItem = function(){
     var editedItem = this.textContent;
 
@@ -125,13 +105,9 @@ var keyPress = function(event){
 };
 
 //Saves items to localStorage
-
 var saveToDoItem = function(todos){
    localStorage.setItem("items",JSON.stringify(todos));
 
-   //Out of JSON string and into list
-   //Logs to localStorage, but doesn't print to screen
-   //console.log(toDoList);
 };
 
 //Load to do items from localStorage
@@ -144,13 +120,12 @@ var loadToDoItems = function(){
     }
 }
 
-//Edit or Update call Save todoitems
+
 loadToDoItems();
 
 
 document.getElementById("submit").addEventListener('click', createNewItemFromInput);
 document.getElementById("input").addEventListener('keypress', keyPress);
-//document.getElementById("list").addEventListener('input', saveToDoItem);
 
 }());
 
