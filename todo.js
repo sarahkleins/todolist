@@ -17,7 +17,8 @@ var createNewItemFromInput = function(){
 }
 
 //Creates new item
-var createNewItem = function (textContent){
+//textContent undefined if changed???
+var createNewItem = function(textContent){
     var newTask = document.createElement('li');
     var span = document.createElement('span');
     var deleteButton = document.createElement('button'); 
@@ -28,7 +29,6 @@ var createNewItem = function (textContent){
     newTask.appendChild(span);
 
     todos.push(textContent);
-    console.log(todos);
  
     newTask.setAttribute("id", "listItem" + (list.childNodes.length +1));
     list.appendChild(newTask);
@@ -46,6 +46,7 @@ var createNewItem = function (textContent){
     deleteButton.contentEditable = false;
     newTask.appendChild(deleteButton);
 
+
     input.value = '';
     input.focus();
 
@@ -61,8 +62,8 @@ var deleteItem = function(){
 
     //indexOf finds the index of removeItem in the todos array. The splice method removes the item. Second parameter is the number of elements that will be removed.
     var index = todos.indexOf(removeItem);
+    console.log(index);
     todos.splice(index, 1)
-
 
     //resave to localStorage
     saveToDoItem(todos);
@@ -72,28 +73,43 @@ var deleteItem = function(){
     input.focus();
 };
 
+
 //Edits item when clicked
 var editItem = function(){
     var editItem = this.parentNode;
     var span = editItem.firstChild;
+    var text = span.textContent;
+
     span.contentEditable = true;
+
+    span.addEventListener("blur", function(event){
+        saveEditedItem(event, text)
+    } , false);
 
     span.focus();
 
-    span.addEventListener("blur", saveEditedItem, true);
-
     };
 
+
 //Saves editedItem to the todos array.
-var saveEditedItem = function(){
-    var editedItem = this.textContent;
+var saveEditedItem = function(event, text){
+    var index = todos.indexOf(text);
+    console.log("text:" , text);
+    console.log("index:" , index);
+//
+    var editedItem = event.target.textContent;
+    console.log("event:", event);
+    //console.log("Text:", text);
+    //var index = todos.indexOf(editedItem);
+    console.log("index:" , index);
+    console.log("editedItem:" , editedItem);
 
-    var index = todos.indexOf(editedItem);
-    todos.splice(index, 1)
-    todos.push(editedItem);
+    if (index >= 0) {
+        var removed = todos.splice(index, 1, editedItem);
+        saveToDoItem(todos);
+    }
 
-    saveToDoItem(todos);
-}
+};
 
 //Creates newTask on keypress (Enter) as well as on click
 var keyPress = function(event){
@@ -106,13 +122,12 @@ var keyPress = function(event){
 
 //Saves items to localStorage
 var saveToDoItem = function(todos){
-   localStorage.setItem("items",JSON.stringify(todos));
+    localStorage.setItem("items",JSON.stringify(todos));
 
 };
 
 //Load to do items from localStorage
 var loadToDoItems = function(){
-
     var notes = JSON.parse(localStorage.getItem("items"));
 
     for (var i = 0; i < notes.length; i++){
