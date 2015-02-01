@@ -9,15 +9,16 @@
     input.focus();
 
 
+//Creates new item from input
 var createNewItemFromInput = function(){
     if (input.value !== ''){
         createNewItem(input.value);
+        //saves to localStorage
         saveToDoItem(todos);
     }
 }
 
 //Creates new item
-//textContent undefined if changed???
 var createNewItem = function(textContent){
     var newTask = document.createElement('li');
     var span = document.createElement('span');
@@ -96,11 +97,9 @@ var saveEditedItem = function(event, text){
     var index = todos.indexOf(text);
     console.log("text:" , text);
     console.log("index:" , index);
-//
+
     var editedItem = event.target.textContent;
     console.log("event:", event);
-    //console.log("Text:", text);
-    //var index = todos.indexOf(editedItem);
     console.log("index:" , index);
     console.log("editedItem:" , editedItem);
 
